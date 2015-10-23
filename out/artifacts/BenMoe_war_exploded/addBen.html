@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加出本项目</title>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" language="JavaScript">
+        $(function(){
+            $('#fileUp').change(function(){
+                $('#uploadLog').html('开始上传..');
+                $('formFile').submit();
+            });
+        })
+        function uploadSuc(msg){
+            if(msg.split('|').length>1){
+                $('#imgShow').attr('src',msg.split('|')[1]);
+                $('#uploadLog').html(msg);
+            }
+        }
+    </script>
+</head>
+<br>
+
+    <form id='formFile' name='formFile' method="get" action="../benServlet" target="frameFile" enctype="multipart/form-data">
+        <input type="file" id="fileUp" name="fileUp"/>
+        <div id="uploadLog"></div><br>
+        <img width="200" src=""height=""id="imgShow"alt="缩略图"/>
+        <input type="submit" name="确认"/>
+    </form>
+</body>
+</html>
